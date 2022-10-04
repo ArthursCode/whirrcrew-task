@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {GiphyService} from "../../services/giphy.service";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {FormGroup, FormControl} from "@angular/forms";
@@ -10,7 +10,7 @@ import {debounceTime, Subscription} from "rxjs";
   templateUrl: './giphy-page.component.html',
   styleUrls: ['./giphy-page.component.scss']
 })
-export class GiphyPageComponent implements OnInit {
+export class GiphyPageComponent implements OnInit, OnDestroy {
   @ViewChild('paginator') paginator: MatPaginator | undefined;
   loading = false;
   offset = 0;
