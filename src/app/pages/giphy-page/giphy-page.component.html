@@ -1,0 +1,22 @@
+<div class="giphy-page">
+  <form [formGroup]="myForm"><input placeholder="Search giphy..." class="giphy-page__search" formControlName="searchText" /></form>
+
+  <p *ngIf="loading">Loading...</p>
+
+  <mat-grid-list *ngIf="giphyService.giphies && !loading" cols="3" rowHeight="2:2">
+
+    <mat-grid-tile class="giphy-page__item" *ngFor="let giphy of giphyService.giphies let i = index">
+      <img [src]="giphy.images.downsized.url" [alt]="giphy.title" />
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+  <mat-paginator class="giphy-page__paginator" #paginator
+                 [length]="giphyService.total"
+                 (page)="onChangePage($event)"
+                 [pageSize]="limit"
+                 hidePageSize="true"
+                 aria-label="Select page"
+  >
+  </mat-paginator>
+</div>
