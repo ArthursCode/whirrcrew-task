@@ -11,7 +11,7 @@ import {debounceTime, Subscription} from "rxjs";
   styleUrls: ['./giphy-page.component.scss']
 })
 export class GiphyPageComponent implements OnInit, OnDestroy {
-  @ViewChild('paginator') paginator: MatPaginator | undefined;
+  @ViewChild('paginator') paginator: MatPaginator;
   loading = false;
   offset = 0;
   limit = 9;
@@ -30,8 +30,9 @@ export class GiphyPageComponent implements OnInit, OnDestroy {
     this.obs = this.myForm.valueChanges
       .pipe(debounceTime(500))
       .subscribe(data => {
+        this.paginator.pageIndex = 0
         if(data.searchText.length) {
-          this.getSearchedGiphies(this.offset, data.searchText)
+          this.getSearchedGiphies(this.offset, data.searchText);
         } else {
           this.getTrendingGiphies(this.offset);
         }

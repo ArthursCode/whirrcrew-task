@@ -1,7 +1,7 @@
 <div class="giphy-page">
   <form [formGroup]="myForm"><input placeholder="Search giphy..." class="giphy-page__search" formControlName="searchText" /></form>
 
-  <p *ngIf="loading">Loading...</p>
+  <h1 class="giphy-page__loading" *ngIf="loading">Loading...</h1>
 
   <mat-grid-list *ngIf="giphyService.giphies && !loading" cols="3" rowHeight="2:2">
 

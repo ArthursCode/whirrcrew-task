@@ -12,6 +12,9 @@
     background-repeat: no-repeat;
     background-position: left 10px center;
   }
+  &__loading {
+    text-align: center;
+  }
   &__item {
     img {
       width: 100%
